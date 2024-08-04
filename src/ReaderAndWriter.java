@@ -27,7 +27,7 @@ public class ReaderAndWriter {
         if (linha == null) {
             linha = "null";
         }
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter("programOut.txt", true))) { // Modo de anexar (append)
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/programOut.txt", true))) { // Modo de anexar (append)
             bw.write(linha);
             bw.newLine();
             bw.flush();
