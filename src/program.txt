@@ -1,19 +1,52 @@
-lw     $t0, 0($t7)
-srl    $t0, $t0, 1
-addi   $t1, $t7, 28
-sll    $t0, $t0, 2
-add    $t1, $t1, $t0
-lw     $t1, 0($t1)
-addi   $t1, $t1, 1
-lw     $t0, 0($t7)
-sll    $t0, $t0, 2 
-addi   $t2, $t7, 28
-add    $t2, $t2, $t0
-sw     $t1, 0($t2)
-lw     $t0, 0($t7)
-addi   $t0, $t0, 1
-sll    $t0, $t0, 2
-addi   $t1, $t7, 28
-add    $t1, $t1, $t0
-addi   $t2, $zero, -1
-sw     $t2, 0($t1)
+lb $s0, 0($s7)
+lh $s2, 100($s6)
+lwl $s4, 200($s5)
+lw $s6, 300($s4)
+lbu $s1, 400($s3)
+lhu $s3, 500($s2)
+lwr $s5, 600($s1)
+sb $s7, 700($s0)
+sh $s0, 800($s1)
+swl $s1, 900($s2)
+sw $s2, 1000($s3)
+swr $s3, 10000($s4)
+add $s0, $s2, $t3
+addu $s2, $s2, $s3
+sub $s4, $s2, $t4
+subu $s6, $s2, $s4
+and $t1, $s2, $t5
+or $t3, $s2, $s5
+xor $t5, $s2, $t6
+nor $t7, $s2, $s6
+slt $s1, $s2, $t7
+sltu $s2, $s2, $s7
+addi $t1, $zero, 245
+addiu $s1, $t2, 246
+slti $t2, $s0, -247
+sltiu $s3, $s7, 248
+andi $t0, $zero, 32767
+ori $s0, $s0, -32768
+xori $s1, $t3, 251
+lui $t1, $s7, -253
+sll $s1, $s2, 12
+srl $s1, $s2, 12
+sra $s1, $s2, 12
+sllv $s1, $s2, 12
+srlv $s1, $s2, 12
+srav $s1, $s2, 12
+mfhi $s0
+mthi $s1
+mflo $s2
+mtlo $s3
+mult $s0, $s4
+multu $s1, $s5
+div $s2, $s6
+divu $s3, $s7
+jr $s1
+jalr $s1, $s2
+bltz $s1, 16000
+bgtz $s1, 32000
+bltzal $s1, -16000
+bgezal $s1, -32000
+j -33554432
+jal 16384
