@@ -27,8 +27,11 @@ public class Translator {
         String[] comands;
         
         if (word.contains("j")) {
-            word = word.replace(" ", ",");
-            comands = word.split("[,]");
+            formattedWord = word.replace("$", "");
+            formattedWord = formattedWord.replace(" ", ",");
+            formattedWord = formattedWord.replace(",,", ",");
+            comands = formattedWord.split("[,]");
+
         } else {
             formattedWord = word.replace("  ", ",");
             formattedWord = formattedWord.replace(" ", "");
