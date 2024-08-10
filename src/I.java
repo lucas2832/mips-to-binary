@@ -4,7 +4,7 @@ import java.util.List;
 public class I {
 
     List<String> listaI1 = Arrays.asList("lb", "lh", "lwl", "lw", "sw", "lbu", "lhu", "lwr", "sb", "sh", "swl", "swr"); //Registrador tipo i que possui ()
-    List<String> listaI2 = Arrays.asList("addi", "slti", "sltiu", "andi", "ori", "xori"); //Registrador tipo i que não possui ()
+    List<String> listaI2 = Arrays.asList("addi", "addiu", "slti", "sltiu", "andi", "ori", "xori"); //Registrador tipo i que não possui ()
     List<String> listaI3 = Arrays.asList("bltz", "bgez", "bltzal", "bgezal", "bgtz", "lui","blez"); // Registradores tipo i sem padrâo
     Instructions instructions = new Instructions();
     Registrars registrars = new Registrars();
@@ -47,3 +47,4 @@ public class I {
         return (listaI1.contains(instruction) || listaI2.contains(instruction) || listaI3.contains(instruction));
     }
 }
+
