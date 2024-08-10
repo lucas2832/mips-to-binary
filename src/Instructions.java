@@ -62,7 +62,7 @@ public class Instructions {
         r.put("div", "011010");
         r.put("divu", "011011");
         r.put("jr", "001000");
-        r.put("jarl", "001001");
+        r.put("jalr", "001001");
 
         j.put("j", "000010");
         j.put("jal", "000011");
