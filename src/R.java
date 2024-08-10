@@ -5,7 +5,7 @@ public class R {
 
     List<String> listaR = Arrays.asList("add", "addu", "sub", "subu", "and", "or", "xor", "nor", "slt", "sltu");
     List<String> listaRNonStandard = Arrays.asList("sll", "srl", "sra", "mfhi", "mthi", "mtlo", "mflo", "mult", "multu", "div", "divu",
-    "jr", "jarl");
+    "jr", "jalr", "sllv", "srlv", "srav");
 
     Instructions instructions = new Instructions();
     Registrars registrars = new Registrars();
@@ -28,8 +28,8 @@ public class R {
                         + instructions.getr("srl");
     
             } else if (comands[0].equals("sra")) {
-                binary = "000000" + "00000" + registrars.getRegistrar(comands[3]) + registrars.getRegistrar(comands[1])
-                        + FixBinary.fixBinary(Integer.toBinaryString(Integer.parseInt(comands[2])), 5)
+                binary = "000000" + "00000" + registrars.getRegistrar(comands[2]) + registrars.getRegistrar(comands[1])
+                        + FixBinary.fixBinary(Integer.toBinaryString(Integer.parseInt(comands[3])), 5)
                         + instructions.getr("sra");
     
             } else if (comands[0].equals("mfhi")) {
@@ -48,31 +48,21 @@ public class R {
                 binary = "000000" + "00000" + "00000" + registrars.getRegistrar(comands[1]) + "00000"
                         + instructions.getr("mflo");
     
-            } else if (comands[0].equals("mult")) {
+            } else if (comands[0].equals("mult") || comands[0].equals("multu") || comands[0].equals("div")|| comands[0].equals("divu")) {
                 binary = "000000" + registrars.getRegistrar(comands[2]) + registrars.getRegistrar(comands[1]) + "00000"
-                        + "00000" + instructions.getr("mult");
-    
-            } else if (comands[0].equals("multu")) {
-                binary = "000000" + registrars.getRegistrar(comands[3]) + registrars.getRegistrar(comands[1]) + "00000"
-                        + "00000" + instructions.getr("multu");
-    
-            } else if (comands[0].equals("div")) {
-                binary = "000000" + registrars.getRegistrar(comands[3]) + registrars.getRegistrar(comands[1]) + "00000"
-                        + "00000" + instructions.getr("div");
-    
-            } else if (comands[0].equals("divu")) {
-                binary = "000000" + registrars.getRegistrar(comands[3]) + registrars.getRegistrar(comands[1]) + "00000"
-                        + "00000" + instructions.getr("divu");
+                        + "00000" + instructions.getr(comands[0]);
     
             } else if (comands[0].equals("jr")) {
-                binary = "000000" + registrars.getRegistrar(comands[3]) + "00000" + "00000" + "00000"
-                        + instructions.getr("mflo");
+                binary = "000000" + registrars.getRegistrar(comands[1]) + "00000" + "00000" + "00000"
+                        + instructions.getr("jr");
     
-            } else if (comands[0].equals("jarl")) {
-                binary = "000000" + registrars.getRegistrar(comands[3]) + "00000" + registrars.getRegistrar(comands[3])
-                        + "00000" + instructions.getr("mflo");
+            } else if (comands[0].equals("sllv") || comands[0].equals("srlv") || comands[0].equals("srav")) {
+                binary = "000000" + "00000" + registrars.getRegistrar(comands[2]) + registrars.getRegistrar(comands[1]) + "00000" + instructions.getr(comands[0]);
     
-            }else {
+            }  else if (comands[0].equals("jalr")) {
+                binary = "000000" + registrars.getRegistrar(comands[2]) + "00000" + registrars.getRegistrar(comands[1]) + "00000" + instructions.getr("jalr");
+    
+            } else {
                 binary = "Não foi possível traduzir.";
             }
         
@@ -86,3 +76,4 @@ public class R {
         return (listaR.contains(instruction) || listaRNonStandard.contains(instruction));
     }
 }
+
